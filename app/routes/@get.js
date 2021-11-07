@@ -25,7 +25,7 @@ var getRoute = db => {
                     for (var a = 0, len = rowskeys.length; a < len; a++) {
                         var dashed = Dashify(rowskeys[a]).toLowerCase();
                         if (rowskeys[a] !== 'password') {
-                            jsonOBject.data[i].attributes[dashed] = models[i].dataValues[rowskeys[a]];
+                            jsonObject.data[i].attributes[dashed] = models[i].dataValues[rowskeys[a]];
                         }
                     }
                 }
