@@ -1,12 +1,21 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var cors = require('cors');
-var passport = require('passport');
-var Config = require('./config/environment'),
+// Class Loading
+const express = require('express'); // Framework
+const bodyParser = require('body-parser'); // Parsing requests
+const cors = require('cors'); // CORS support
+const passport = require('passport'); // Auth
+const https = require('https');
+const fs = require('fs');
+
+// Configurations
+const Config = require('./config/environment'),
     config = new Config;
-var corsOptions = {
+const corsOptions = {
     origin: config.cors
 };
+const certOptions = {
+    pfx: fs.readFileSync(config.certfile),
+    passphrase: config.certpassphrase
+}
 
 // Create express & set up
 var app = express();
@@ -22,6 +31,8 @@ const db = require('./app/services/sequelize');
 // Set up routes
 require('./app/services/routes')(app,db);
 
+// listen
 
-app.listen(config.port);
+https.createServer(certOptions, app).listen(config.port);
+
 console.log('listening on port : ' + config.port);
