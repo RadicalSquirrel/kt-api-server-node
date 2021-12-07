@@ -1,7 +1,11 @@
-module.exports = function (app,db) {
+var express = require('express');
+var router = new express.Router();
+
+module.exports = function (app, db) {
     //set up route handlers
     const Users = require('../routes/users')(db);
     const Get = require('../routes/@get')(db);
+    const Auth = require('../routes/auth');
     // attach route handlers to express
 
     // ==== Generic Get Routes ====
@@ -13,6 +17,11 @@ module.exports = function (app,db) {
     app.use('/rankstatic', Get);
 
     // ==== Auth Routes ====
+    app.use('/auth', Auth);
+    app.use('/', router.get('/logout', (req, res) => {
+        req.logout();
+        res.redirect('/');
+    }));
 
     // ==== Patch Routes ====
 

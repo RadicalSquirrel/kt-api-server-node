@@ -11,6 +11,8 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             notNull: true
         }
+    }, {
+        timestamps: true
     });
 
     return groups;

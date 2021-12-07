@@ -17,16 +17,20 @@ const certOptions = {
     passphrase: config.certpassphrase
 }
 
+// Set up DB
+const db = require('./app/services/sequelize');
+
+// Set up Passport
+require('./app/services/passport')(passport, db);
+
 // Create express & set up
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(cors(corsOptions));
-
-// Set up DB
-
-const db = require('./app/services/sequelize');
+app.use(passport.initialize());
+//app.use(passport.session());
 
 // Set up routes
 require('./app/services/routes')(app,db);

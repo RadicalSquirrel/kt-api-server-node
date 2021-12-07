@@ -14,7 +14,13 @@ module.exports = (sequelize) => {
         "name": {
             type: DataTypes.STRING,
             notNull: true
+        },
+        "numberOfHeroes": {
+            type: DataTypes.INTEGER,
+            notNull: true
         }
+    },{
+        timestamps: true
     });
 
     return tourneytargets;

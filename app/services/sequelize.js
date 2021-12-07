@@ -10,7 +10,9 @@ require("../models/groups")(db, Sequelize);
 require("../models/tourneytargets")(db, Sequelize);
 require("../models/heroesStatic")(db, Sequelize);
 require("../models/rankStatic")(db, Sequelize);
-require("../models/heroes")(db, Sequelize);
+require("../models/heros")(db, Sequelize);
 require("../models/@relationships")(db, Sequelize);
+
+//db.sync({ force: true });
 
 module.exports = db;

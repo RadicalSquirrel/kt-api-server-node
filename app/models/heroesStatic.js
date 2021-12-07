@@ -1,7 +1,7 @@
 const DataTypes = require('sequelize');
 
 module.exports = (sequelize) => {
-    const hereoesstatic = sequelize.define('heroesstatic', {
+    const hereoesstatics = sequelize.define('heroesstatics', {
         "id": {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -13,7 +13,9 @@ module.exports = (sequelize) => {
         "image_reference": {
             type: DataTypes.STRING
         }
+    }, {
+        timestamps: false
     });
 
-    return hereoesstatic;
+    return hereoesstatics;
 };

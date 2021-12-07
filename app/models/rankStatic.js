@@ -1,7 +1,7 @@
 const DataTypes = require('sequelize');
 
 module.exports = (sequelize) => {
-    const rankstatic = sequelize.define('rankstatic', {
+    const rankstatics = sequelize.define('rankstatics', {
         "id": {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -13,7 +13,9 @@ module.exports = (sequelize) => {
         "color": {
             type: DataTypes.STRING
         }
+    }, {
+        timestamps: false
     });
 
-    return rankstatic;
+    return rankstatics;
 };
